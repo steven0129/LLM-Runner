@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: pytorch/pytorch:1.12.1-cuda11.3-cudnn8-devel
+
+%environment
+    TZ=UTC
+    DEBIAN_FRONTEND=noninteractive
+
+%post
+    export TZ=UTC
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update && apt-get install -y wget
+    rm -rf /var/lib/apt/lists/*
+    rm -rf /opt/conda
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -b && rm -f Miniconda3-latest-Linux-x86_64.sh
+    /root/miniconda3/bin/conda create --prefix /opt/conda python=3.10
+    pip install --force-reinstall torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+    pip install accelerate==0.25.0
+    pip install transformers==4.36.2
