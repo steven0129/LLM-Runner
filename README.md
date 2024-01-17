@@ -3,11 +3,11 @@
 ## Installation
 
 ```
-sudo singularity build llm-pytorch-12.1.sif singularity.def
+sudo singularity build llm-pytorch-cuda12.1.sif singularity.def
 ```
 
 ## Quick Start
 
 ```
-singularity exec --nv llm-pytorch-12.1.sif sh -c python run_llm.py
+singularity exec --nv llm-pytorch-cuda12.1.sif sh -c python run_llm.py
 ```
