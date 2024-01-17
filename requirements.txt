@@ -1,2 +1,5 @@
-torch==1.12.1+cu113
+accelerate==0.25.0
+torch
+torchvision
+torchaudio
 transformers==4.36.2

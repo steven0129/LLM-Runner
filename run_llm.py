@@ -2,9 +2,9 @@ from transformers import AutoTokenizer
 import transformers
 import torch
 
-model = 'Llama-2-7b-chat-hf'
+model = 'model/Llama-2-7b-chat-hf'
 
-tokenizer = AutoTokenizer.from_pretrained('model/' + model)
+tokenizer = AutoTokenizer.from_pretrained(model)
 pipeline = transformers.pipeline(
     "text-generation",
     model=model,
@@ -17,7 +17,7 @@ if __name__ == '__main__':
     buffer = ''
 
     while True:
-        prompt = input('> ')
+        prompt = input('Prompt > ')
         if prompt == 'exit': break
         sequences = pipeline(
             f"{buffer}[INST]{prompt}[/INST]",
